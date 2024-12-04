@@ -121,7 +121,7 @@ app.get('/api/patients', async (req, res) => {
             ...patient.toObject(),
             currentSession: currentSession ? currentSession.sessionId : null,
             isStreaming,
-            prevDataPoints: currentSession.heartMetrics,
+            prevDataPoints: currentSession ? currentSession.heartMetrics : [],
             sessions
           };
         })
