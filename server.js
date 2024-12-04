@@ -110,7 +110,6 @@ app.get('/test', (req, res) => {
 
 app.get('/api/patients', async (req, res) => {
     try {
-        console.log("hereee");
       const patients = await Patient.find();
   
       const enrichedPatients = await Promise.all(
@@ -132,6 +131,7 @@ app.get('/api/patients', async (req, res) => {
   
       res.status(200).json({ patients: enrichedPatients });
     } catch (err) {
+        console.log(err.message);
       res.status(500).json({ message: 'Error fetching patients', error: err.message });
     }
   });

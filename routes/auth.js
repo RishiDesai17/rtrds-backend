@@ -37,8 +37,8 @@ router.post('/register/doctor', async (req, res) => {
 // Login Patient
 router.post('/login/patient', async (req, res) => {
   try {
-    const { email, password } = req.body;
-    const patient = await Patient.findOne({ email });
+    const { username, password } = req.body;
+    const patient = await Patient.findOne({ username });
     if (!patient) return res.status(400).json({ message: 'Invalid email or password' });
 
     const isMatch = await patient.comparePassword(password);
